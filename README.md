@@ -85,7 +85,7 @@
 ### 1. Клонировать репозиторий
 
 ```bash
-git clone <URL_репозитория>
+git clone https://github.com/elmira-coder/SuperLibrary.git
 ```
 ### 2. Перейти в папку проекта
 ```bash
