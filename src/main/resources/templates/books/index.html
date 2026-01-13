@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::body})}">
+
+<body>
+
+<section class="space-y-8">
+
+  <!-- Заголовок -->
+  <div class="flex items-center justify-between">
+    <h1 class="font-serif text-3xl">
+      Каталог книг
+    </h1>
+
+    <a href="/books/new"
+       class="text-sm hover:text-accent transition">
+      + Добавить книгу
+    </a>
+  </div>
+
+  <!-- Список книг -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+    <div th:each="book : ${books}"
+         class="p-5 bg-white/60 rounded-2xl shadow-soft hover:shadow-lg transition">
+
+      <a th:href="@{/books/{id}(id=${book.getId()})}"
+         class="block space-y-2 card-link">
+
+        <h2 class="font-serif text-xl"
+            th:text="${book.getTitle()}">
+          Название книги
+        </h2>
+
+        <p class="text-sm opacity-80"
+           th:text="${book.getAuthor()}">
+          Автор
+        </p>
+
+        <p class="text-xs opacity-60"
+           th:text="${book.getReleaseDate()}">
+          Год издания
+        </p>
+
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- Пустой список -->
+  <div th:if="${#lists.isEmpty(books)}"
+       class="text-center opacity-60 italic">
+    В библиотеке пока нет книг
+  </div>
+
+</section>
+
+</body>
+</html>

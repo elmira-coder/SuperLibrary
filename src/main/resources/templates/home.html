@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::body})}">
+
+<body>
+
+<section class="text-center max-w-3xl mx-auto space-y-6">
+
+    <h1 class="font-serif text-4xl text-accent">
+        Добро пожаловать в электронную библиотеку
+    </h1>
+
+    <p class="text-lg opacity-80">
+        Тихое место для книг, читателей и истории, которую они хранят.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-10">
+
+        <!-- Книги -->
+        <a href="/books"
+           class="block p-6 bg-white/60 rounded-2xl shadow-soft hover:shadow-lg transition card-link">
+
+            <div class="text-4xl mb-4">📖</div>
+
+            <h2 class="font-serif text-2xl mb-2">
+                Книги
+            </h2>
+
+            <p class="text-sm opacity-70">
+                Просмотр каталога, добавление и управление книгами
+            </p>
+        </a>
+
+        <!-- Читатели -->
+        <a href="/people"
+           class="block p-6 bg-white/60 rounded-2xl shadow-soft hover:shadow-lg transition card-link">
+
+            <div class="text-4xl mb-4">👤</div>
+
+            <h2 class="font-serif text-2xl mb-2">
+                Читатели
+            </h2>
+
+            <p class="text-sm opacity-70">
+                Список читателей и выданных им книг
+            </p>
+        </a>
+
+    </div>
+
+</section>
+
+</body>
+</html>

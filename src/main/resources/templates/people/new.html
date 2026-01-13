@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::body})}">
+<body>
+
+<section class="max-w-2xl mx-auto p-6 space-y-6">
+
+    <h1 class="font-serif text-3xl">Добавление нового читателя</h1>
+
+    <form th:method="POST"
+          th:action="@{/people}"
+          th:object="${person}"
+          class="space-y-4 p-6 bg-white/60 rounded-2xl shadow-soft">
+
+        <!-- ФИО -->
+        <div class="flex flex-col">
+            <label for="name" class="font-medium mb-1">ФИО:</label>
+            <input type="text" th:field="*{name}" id="name"
+                   class="p-2 rounded-lg border border-gray-300"/>
+            <div class="text-red-600 text-sm mt-1" th:if="${#fields.hasErrors('name')}"
+                 th:errors="*{name}">Ошибка ФИО</div>
+        </div>
+
+        <!-- Год рождения -->
+        <div class="flex flex-col">
+            <label for="birthYear" class="font-medium mb-1">Год рождения:</label>
+            <input type="text" th:field="*{birthYear}" id="birthYear"
+                   class="p-2 rounded-lg border border-gray-300"/>
+            <div class="text-red-600 text-sm mt-1" th:if="${#fields.hasErrors('birthYear')}"
+                 th:errors="*{birthYear}">Ошибка ДР</div>
+        </div>
+
+        <!-- Кнопка -->
+        <div class="pt-4">
+            <button type="submit"
+                    class="px-6 py-2 rounded-xl bg-green-100 hover:bg-green-200 transition">
+                Создать
+            </button>
+        </div>
+
+    </form>
+
+    <!-- Ссылка назад -->
+    <div>
+        <a href="/people" class="text-sm opacity-80 hover:opacity-100 transition">
+            ← Назад к списку читателей
+        </a>
+    </div>
+
+</section>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+spring:
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+  application:
+    name: SuperLibrary
+  thymeleaf:
+    cache: false

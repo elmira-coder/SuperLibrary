@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru"
+      xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::body})}">
+<body>
+
+<section class="space-y-8 max-w-3xl mx-auto p-6">
+
+    <!-- Заголовок -->
+    <div class="flex items-center justify-between">
+        <h1 class="font-serif text-3xl">
+            Список читателей
+        </h1>
+
+        <a href="/people/new"
+           class="text-sm hover:text-accent transition">
+            + Добавить нового
+        </a>
+    </div>
+
+    <!-- Список людей -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <div th:each="person : ${people}"
+             class="p-5 bg-white/60 rounded-2xl shadow-soft hover:shadow-lg transition">
+
+            <a th:href="@{/people/{id}(id=${person.getId()})}"
+               class="block space-y-1 card-link">
+
+                <h2 class="font-serif text-xl" th:text="${person.getName()}">Имя</h2>
+                <p class="text-sm opacity-70" th:text="'Год рождения: ' + ${person.getBirthYear()}">Год</p>
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- Пустой список -->
+    <div th:if="${#lists.isEmpty(people)}"
+         class="text-center opacity-60 italic">
+        Пока нет читателей
+    </div>
+
+</section>
+
+</body>
+</html>
